@@ -14,7 +14,6 @@ const apiRequest = async () => {
       'Content-Type': 'application/json',
     }
   });
-
   // console.log(response);
 
   // Return the response in JSON format
@@ -26,10 +25,26 @@ const updatePage = async () => {
 
   // Make API request and get an array of fruit objects
   const fruitsArray = await apiRequest();
-  // console.log(fruitsArray);
+
+
+
+  console.log(fruitsArray);
 
   // TODO: Use either `map` and/or `filter` to extract some data from the array of fruit objects
   // For example, find "name of all fruits whose sugar > 15",
+
+
+  fruitsArray.filter((fruit) => fruit.nutritions.protein >= 1).map(({name, family, genus, nutritions, order}) => {
+
+    const newElement = document.createElement('div')
+    newElement.className = "fruit"
+    newElement.innerHTML = `Name: ${name}, Order: ${order}, Family: ${family}, Nutritions: [calories: ${nutritions.calories}, carbs: ${nutritions.carbohydrates}, fat: ${nutritions.fat}, protein: ${nutritions.protein}, sugar: ${nutritions.sugar}], Genus: ${genus}`
+    gallery.append(newElement)
+
+
+
+  })
+
 
   // TODO: Create a new HTML element to display your data
 
